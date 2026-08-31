@@ -1,0 +1,70 @@
+name: Generar APK
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Preparar carpeta web
+        run: |
+          mkdir -p www
+          cp index.html www/index.html
+
+      - name: Compilar APK con Capacitor e Icono Personalizado
+        run: |
+          npm init -y
+          npm install @capacitor/core@^6.0.0 @capacitor/cli@^6.0.0 @capacitor/android@^6.0.0
+          npx cap init "Afinador" "com.afinador.app" --web-dir www
+          npx cap add android
+
+          # Inyección limpia de permisos en AndroidManifest.xml
+          MANIFEST="android/app/src/main/AndroidManifest.xml"
+          sed -i '/<application/i \    <uses-permission android:name="android.permission.RECORD_AUDIO" />\n    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />' $MANIFEST
+
+          # Procesar icono si existe
+          if [ -f "icon.png" ]; then
+            sudo apt-get update && sudo apt-get install -y imagemagick
+            rm -rf android/app/src/main/res/mipmap-anydpi-v26
+            
+            convert icon.png -resize 48x48 android/app/src/main/res/mipmap-mdpi/ic_launcher.png
+            convert icon.png -resize 48x48 android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png
+            convert icon.png -resize 72x72 android/app/src/main/res/mipmap-hdpi/ic_launcher.png
+            convert icon.png -resize 72x72 android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png
+            convert icon.png -resize 96x96 android/app/src/main/res/mipmap-xhdpi/ic_launcher.png
+            convert icon.png -resize 96x96 android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png
+            convert icon.png -resize 144x144 android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png
+            convert icon.png -resize 144x144 android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png
+            convert icon.png -resize 192x192 android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png
+            convert icon.png -resize 192x192 android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png
+          fi
+
+          npx cap sync android
+          echo "sdk.dir=$ANDROID_HOME" > android/local.properties
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon
+
+      - name: Entregar APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: AfinadorPro-APK
+          path: android/app/build/outputs/apk/debug/app-debug.apk
