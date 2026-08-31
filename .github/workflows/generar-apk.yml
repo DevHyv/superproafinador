@@ -36,25 +36,14 @@ jobs:
           npx cap init "Afinador" "com.afinador.app" --web-dir www
           npx cap add android
 
-          # Inyección limpia de permisos en AndroidManifest.xml
+          # Inyección de permisos en AndroidManifest.xml
           MANIFEST="android/app/src/main/AndroidManifest.xml"
-          sed -i '/<application/i \    <uses-permission android:name="android.permission.RECORD_AUDIO" />\n    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />' $MANIFEST
+          sed -i '/<application/i \    <uses-permission android:name="android.permission.RECORD_AUDIO" />\n    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />' "$MANIFEST"
 
-          # Procesar icono si existe
+          # Procesar icono con la herramienta oficial de Capacitor si existe icon.png
           if [ -f "icon.png" ]; then
-            sudo apt-get update && sudo apt-get install -y imagemagick
-            rm -rf android/app/src/main/res/mipmap-anydpi-v26
-            
-            convert icon.png -resize 48x48 android/app/src/main/res/mipmap-mdpi/ic_launcher.png
-            convert icon.png -resize 48x48 android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png
-            convert icon.png -resize 72x72 android/app/src/main/res/mipmap-hdpi/ic_launcher.png
-            convert icon.png -resize 72x72 android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png
-            convert icon.png -resize 96x96 android/app/src/main/res/mipmap-xhdpi/ic_launcher.png
-            convert icon.png -resize 96x96 android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png
-            convert icon.png -resize 144x144 android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png
-            convert icon.png -resize 144x144 android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png
-            convert icon.png -resize 192x192 android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png
-            convert icon.png -resize 192x192 android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png
+            npm install -g @capacitor/assets
+            npx capacitor-assets generate --android
           fi
 
           npx cap sync android
