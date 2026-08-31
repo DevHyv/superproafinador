@@ -29,20 +29,32 @@ jobs:
           mkdir -p www
           cp index.html www/index.html
 
-      - name: Compilar APK con Capacitor e Icono Personalizado
+      - name: Compilar APK con Capacitor e Icono
         run: |
           npm init -y
-          npm install @capacitor/core@^6.0.0 @capacitor/cli@^6.0.0 @capacitor/android@^6.0.0
+          npm install @capacitor/core@5.7.5 @capacitor/cli@5.7.5 @capacitor/android@5.7.5
+
           npx cap init "Afinador" "com.afinador.app" --web-dir www
           npx cap add android
 
-          # Inyección de permisos en AndroidManifest.xml
-          MANIFEST="android/app/src/main/AndroidManifest.xml"
-          sed -i '/<application/i \    <uses-permission android:name="android.permission.RECORD_AUDIO" />\n    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />' "$MANIFEST"
+          # Inyección limpia y segura de permisos usando Python
+          python3 -c "
+          manifest_path = 'android/app/src/main/AndroidManifest.xml'
+          with open(manifest_path, 'r') as f:
+              content = f.read()
+          permissions = '''
+              <uses-permission android:name=\"android.permission.RECORD_AUDIO\" />
+              <uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\" />
+          '''
+          if 'RECORD_AUDIO' not in content:
+              content = content.replace('<application', permissions + '\n    <application')
+              with open(manifest_path, 'w') as f:
+                  f.write(content)
+          "
 
-          # Procesar icono con la herramienta oficial de Capacitor si existe icon.png
+          # Generar iconos oficialmente con Capacitor Assets si existe icon.png
           if [ -f "icon.png" ]; then
-            npm install -g @capacitor/assets
+            npm install @capacitor/assets@^3.0.0
             npx capacitor-assets generate --android
           fi
 
