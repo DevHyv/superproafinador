@@ -46,7 +46,6 @@
             user-select: none;
         }
 
-        /* Permitir selección de texto en campos específicos */
         input,
         textarea,
         .result-box,
@@ -71,9 +70,7 @@
             line-height: 1.4;
         }
 
-        /* ============================================================
-           BOTÓN DE DONACIÓN (PAYPAL)
-           ============================================================ */
+        /* BOTÓN DONACIÓN */
         .donate-btn {
             position: fixed;
             top: 15px;
@@ -92,12 +89,10 @@
             align-items: center;
             gap: 5px;
         }
-
         .donate-btn:hover {
             background: #005ea6;
             transform: translateY(-2px);
         }
-
         .donate-btn:active {
             transform: translateY(1px) scale(0.95);
         }
@@ -107,11 +102,11 @@
             width: 100%;
             background: var(--bg-primary);
             padding: 1rem 0.8rem 1.5rem;
-            margin-top: 40px; /* Espacio para que no choque con el botón de donar en móviles */
+            margin-top: 40px;
         }
 
         /* ============================================================
-                   NAVEGACIÓN POR PESTAÑAS
+                   NAVEGACIÓN
                    ============================================================ */
         .tab-navigation {
             display: flex;
@@ -121,7 +116,6 @@
             margin-bottom: 1.5rem;
             gap: 0.2rem;
         }
-
         .tab-btn {
             flex: 1;
             background: transparent;
@@ -136,40 +130,27 @@
             font-family: inherit;
             outline-offset: 2px;
         }
-
         .tab-btn:focus-visible {
             outline: 2px solid var(--accent-green);
             outline-offset: -2px;
         }
-
         .tab-btn.active {
             background: var(--bg-tertiary);
             color: var(--text-primary);
         }
-
         .tab-content {
             display: none;
         }
-
         .tab-content.active {
             display: block;
             animation: fadeIn 0.25s ease;
         }
-
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(4px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ============================================================
-                   BOTONES Y GRUPOS
-                   ============================================================ */
+        /* BOTONES Y GRUPOS */
         .btn-group {
             background: var(--bg-secondary);
             padding: 0.2rem;
@@ -178,7 +159,6 @@
             gap: 0.2rem;
             flex-wrap: wrap;
         }
-
         .btn-group button {
             background: transparent;
             border: none;
@@ -191,12 +171,10 @@
             transition: background var(--transition-fast), color var(--transition-fast);
             font-family: inherit;
         }
-
         .btn-group button.active {
             background: var(--bg-tertiary);
             color: var(--text-primary);
         }
-
         .btn-group button:focus-visible,
         .action-btn:focus-visible,
         .primary-btn:focus-visible,
@@ -218,31 +196,21 @@
             font-family: inherit;
             min-height: 3.2rem;
         }
-
         .action-btn:active {
             background: var(--bg-active);
             transform: scale(0.98);
         }
-
         .action-btn.listening {
             background: var(--danger-bg);
             color: var(--danger-text);
             animation: pulse 1.5s ease-in-out infinite;
         }
-
         @keyframes pulse {
-            0%,
-            100% {
-                box-shadow: 0 0 0 0 rgba(90, 58, 58, 0.4);
-            }
-            50% {
-                box-shadow: 0 0 0 8px rgba(90, 58, 58, 0);
-            }
+            0%, 100% { box-shadow: 0 0 0 0 rgba(90, 58, 58, 0.4); }
+            50% { box-shadow: 0 0 0 8px rgba(90, 58, 58, 0); }
         }
 
-        /* ============================================================
-                   ENCABEZADO DEL AFINADOR
-                   ============================================================ */
+        /* ENCABEZADO AFINADOR */
         .tuner-header {
             display: flex;
             align-items: center;
@@ -251,14 +219,12 @@
             flex-wrap: wrap;
             gap: 0.8rem;
         }
-
         .tuner-header h1,
         .section-title {
             font-weight: 700;
             font-size: 1.6rem;
             color: var(--text-primary);
         }
-
         .controls-row {
             display: flex;
             justify-content: space-between;
@@ -268,9 +234,7 @@
             flex-wrap: wrap;
         }
 
-        /* ============================================================
-                   PANTALLA DE NOTA
-                   ============================================================ */
+        /* PANTALLA NOTA */
         .note-display {
             background: var(--bg-secondary);
             border-radius: var(--radius-lg);
@@ -281,11 +245,9 @@
             justify-content: space-between;
             transition: background var(--transition-slow);
         }
-
         .note-display.detected {
             background: #2d3a2d;
         }
-
         .note-name {
             font-size: 3.5rem;
             font-weight: 700;
@@ -294,11 +256,9 @@
             line-height: 1;
             transition: color var(--transition-slow);
         }
-
         .note-name.in-tune {
             color: var(--accent-green);
         }
-
         .note-frequency {
             font-size: 1.1rem;
             font-weight: 600;
@@ -309,9 +269,7 @@
             font-variant-numeric: tabular-nums;
         }
 
-        /* ============================================================
-                   BARRA DEL AFINADOR
-                   ============================================================ */
+        /* BARRA */
         .tuner-bar-wrapper {
             background: var(--bg-secondary);
             border-radius: var(--radius-lg);
@@ -320,7 +278,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .tuner-bar-wrapper::after {
             content: '';
             position: absolute;
@@ -328,12 +285,11 @@
             top: 0;
             bottom: 0;
             width: 2px;
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255,255,255,0.3);
             transform: translateX(-50%);
             pointer-events: none;
             z-index: 2;
         }
-
         .tuner-bar-fill {
             height: 100%;
             width: 50%;
@@ -343,11 +299,9 @@
             position: relative;
             z-index: 1;
         }
-
         .tuner-bar-fill.in-tune {
             background: var(--accent-green-bg);
         }
-
         .cent-indicator {
             display: flex;
             justify-content: space-between;
@@ -356,7 +310,6 @@
             color: var(--text-muted);
             padding: 0 0.2rem;
         }
-
         .cent-value {
             text-align: center;
             font-size: 1.4rem;
@@ -370,27 +323,22 @@
             font-variant-numeric: tabular-nums;
             transition: color var(--transition-slow);
         }
-
         .cent-value.in-tune {
             color: var(--accent-green);
         }
-
         .cent-container {
             display: flex;
             justify-content: center;
             margin: 0.5rem 0 1rem;
         }
 
-        /* ============================================================
-                   CUERDAS
-                   ============================================================ */
+        /* CUERDAS */
         .strings-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 0.5rem;
             margin-top: 1rem;
         }
-
         .string-btn {
             background: var(--bg-secondary);
             border: none;
@@ -406,22 +354,18 @@
             pointer-events: none;
             min-height: 3.5rem;
         }
-
         .string-btn.manual-active {
             pointer-events: auto;
             cursor: pointer;
         }
-
         .string-btn:active {
             transform: scale(0.96);
         }
-
         .string-btn.active-string {
             background: var(--bg-tertiary);
             color: var(--text-primary);
             box-shadow: 0 0 0 2px var(--accent-green-bg);
         }
-
         .string-btn .string-note {
             display: block;
             font-size: 0.75rem;
@@ -430,9 +374,7 @@
             margin-top: 0.2rem;
         }
 
-        /* ============================================================
-                   MENSAJE DE ESTADO
-                   ============================================================ */
+        /* MENSAJE ESTADO */
         .status-message {
             text-align: center;
             margin-top: 1.2rem;
@@ -445,24 +387,19 @@
             min-height: 2.5rem;
             transition: background var(--transition-slow);
         }
-
         .status-message.success {
             background: #2d3a2d;
             color: var(--accent-green);
         }
-
         .status-message.error {
             background: var(--danger-bg);
             color: var(--danger-text);
         }
 
-        /* ============================================================
-                   FORMULARIOS
-                   ============================================================ */
+        /* FORMULARIOS */
         .form-group {
             margin-bottom: 1rem;
         }
-
         .form-group label {
             display: block;
             font-size: 1rem;
@@ -470,7 +407,6 @@
             color: var(--text-secondary);
             margin-bottom: 0.4rem;
         }
-
         .form-control {
             width: 100%;
             background: var(--bg-secondary);
@@ -486,12 +422,10 @@
             appearance: none;
             -webkit-appearance: none;
         }
-
         .form-control:focus {
             background: var(--bg-tertiary);
             box-shadow: 0 0 0 2px var(--accent-green-bg);
         }
-
         select.form-control {
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a0a0a0' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
@@ -499,19 +433,16 @@
             padding-right: 2.5rem;
             cursor: pointer;
         }
-
         textarea.form-control {
             resize: vertical;
             min-height: 100px;
             line-height: 1.6;
         }
-
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 0.8rem;
         }
-
         .primary-btn {
             width: 100%;
             background: var(--bg-tertiary);
@@ -527,12 +458,10 @@
             font-family: inherit;
             min-height: 3.5rem;
         }
-
         .primary-btn:active {
             background: var(--bg-active);
             transform: scale(0.98);
         }
-
         .result-box {
             margin-top: 0.8rem;
             padding: 1rem;
@@ -549,46 +478,19 @@
             border-left: 4px solid var(--accent-green-bg);
         }
 
-        /* ============================================================
-                   RESPONSIVE
-                   ============================================================ */
+        /* RESPONSIVE */
         @media (max-width: 480px) {
-            .app-card {
-                padding: 0.8rem 0.5rem 1rem;
-            }
-            .grid-2 {
-                grid-template-columns: 1fr;
-            }
-            .strings-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .note-name {
-                font-size: 2.8rem;
-            }
-            .tab-btn {
-                font-size: 1rem;
-                padding: 0.8rem 0.4rem;
-            }
-            .action-btn {
-                font-size: 1rem;
-                padding: 0.8rem 1.2rem;
-            }
-            .btn-group button {
-                padding: 0.6rem 0.8rem;
-                font-size: 0.9rem;
-            }
-            .donate-btn {
-                top: 10px;
-                right: 10px;
-                padding: 0.5rem 0.8rem;
-                font-size: 0.85rem;
-            }
+            .app-card { padding: 0.8rem 0.5rem 1rem; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .strings-grid { grid-template-columns: repeat(2, 1fr); }
+            .note-name { font-size: 2.8rem; }
+            .tab-btn { font-size: 1rem; padding: 0.8rem 0.4rem; }
+            .action-btn { font-size: 1rem; padding: 0.8rem 1.2rem; }
+            .btn-group button { padding: 0.6rem 0.8rem; font-size: 0.9rem; }
+            .donate-btn { top: 10px; right: 10px; padding: 0.5rem 0.8rem; font-size: 0.85rem; }
         }
-
         @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
+            *, *::before, *::after {
                 animation-duration: 0.01ms !important;
                 transition-duration: 0.01ms !important;
             }
@@ -608,11 +510,11 @@
         ============================================================ -->
         <nav class="tab-navigation" role="tablist" aria-label="Secciones">
             <button class="tab-btn active" role="tab" aria-selected="true"
-            aria-controls="tunerTab" id="tabTuner"
-            onclick="switchTab('tunerTab', this)">Afinador</button>
+                    aria-controls="tunerTab" id="tabTuner"
+                    onclick="switchTab('tunerTab', this)">Afinador</button>
             <button class="tab-btn" role="tab" aria-selected="false"
-            aria-controls="transposeTab" id="tabTranspose"
-            onclick="switchTab('transposeTab', this)">Transpositor</button>
+                    aria-controls="transposeTab" id="tabTranspose"
+                    onclick="switchTab('transposeTab', this)">Transpositor</button>
         </nav>
 
         <!-- ============================================================
@@ -641,15 +543,15 @@
                 <div class="form-group" style="margin-bottom: 0;">
                     <label for="tuningSelect" style="font-size: 0.85rem;">Afinación</label>
                     <select id="tuningSelect" class="form-control"
-                    style="font-size: 0.95rem; min-height: 2.5rem; padding: 0.5rem;"
-                    aria-label="Selección de afinación"></select>
+                            style="font-size: 0.95rem; min-height: 2.5rem; padding: 0.5rem;"
+                            aria-label="Selección de afinación"></select>
                 </div>
                 <div class="form-group" style="margin-bottom: 0;">
                     <label for="a4Freq" style="font-size: 0.85rem;">Referencia A4 (Hz)</label>
                     <input type="number" id="a4Freq" class="form-control"
-                    value="440" min="430" max="450" step="1"
-                    style="font-size: 0.95rem; min-height: 2.5rem; padding: 0.5rem;"
-                    aria-label="Frecuencia de referencia A4 en Hertz">
+                           value="440" min="430" max="450" step="1"
+                           style="font-size: 0.95rem; min-height: 2.5rem; padding: 0.5rem;"
+                           aria-label="Frecuencia de referencia A4 en Hertz">
                 </div>
             </div>
 
@@ -659,272 +561,582 @@
             </div>
 
             <div class="tuner-bar-wrapper" role="meter" aria-label="Indicador de afinación"
-            aria-valuemin="-50" aria-valuemax="50" aria-valuenow="0" id="tunerMeter">
-            <div class="tuner-bar-fill" id="tunerBar" style="width: 50%;"></div>
-        </div>
-        <div class="cent-indicator">
-            <span>−50</span>
-            <span>0</span>
-            <span>+50</span>
-        </div>
-        <div class="cent-container">
-            <span class="cent-value" id="centValue" aria-label="Desviación en cents">––</span>
+                 aria-valuemin="-50" aria-valuemax="50" aria-valuenow="0" id="tunerMeter">
+                <div class="tuner-bar-fill" id="tunerBar" style="width: 50%;"></div>
+            </div>
+            <div class="cent-indicator">
+                <span>−50</span>
+                <span>0</span>
+                <span>+50</span>
+            </div>
+            <div class="cent-container">
+                <span class="cent-value" id="centValue" aria-label="Desviación en cents">––</span>
+            </div>
+
+            <div class="strings-grid" id="stringsContainer" role="group" aria-label="Cuerdas del instrumento"></div>
+
+            <div class="status-message" id="statusMessage" aria-live="polite">
+                Pulse el botón para empezar
+            </div>
         </div>
 
-        <div class="strings-grid" id="stringsContainer" role="group" aria-label="Cuerdas del instrumento"></div>
+        <!-- ============================================================
+        PESTAÑA: TRANSPOSITOR
+        ============================================================ -->
+        <div id="transposeTab" class="tab-content" role="tabpanel" aria-labelledby="tabTranspose">
+            <h1 class="section-title" style="margin-bottom: 1rem;">Transpositor</h1>
 
-        <div class="status-message" id="statusMessage" aria-live="polite">
-            Pulse el botón para empezar
+            <div class="form-group">
+                <label for="chords">Acordes de entrada</label>
+                <textarea id="chords" class="form-control" rows="3"
+                          placeholder="Ej: Sol  Mim  Lam/Do  Re7"
+                          aria-label="Acordes a transponer">Sol  Mim  Lam/Do  Re7</textarea>
+            </div>
+
+            <div class="grid-2">
+                <div class="form-group">
+                    <label for="fromKey">Tonalidad actual</label>
+                    <select id="fromKey" class="form-control" aria-label="Tonalidad de origen"></select>
+                </div>
+                <div class="form-group">
+                    <label for="toKey">Nueva tonalidad</label>
+                    <select id="toKey" class="form-control" aria-label="Tonalidad de destino"></select>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="form-group">
+                    <label for="outputFormat">Formato de nota</label>
+                    <select id="outputFormat" class="form-control" aria-label="Formato de salida">
+                        <option value="es">Español (Do, Re, Mi...)</option>
+                        <option value="en">Anglo (C, D, E...)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="capoShift">Capodastro (Capo)</label>
+                    <select id="capoShift" class="form-control" aria-label="Posición del capo">
+                        <option value="0">Sin Capo</option>
+                        <option value="1">Traste 1</option>
+                        <option value="2">Traste 2</option>
+                        <option value="3">Traste 3</option>
+                        <option value="4">Traste 4</option>
+                        <option value="5">Traste 5</option>
+                    </select>
+                </div>
+            </div>
+
+            <button class="primary-btn" onclick="transpose()" aria-label="Transponer acordes">Transponer</button>
+
+            <div class="form-group" style="margin-top: 1rem;">
+                <label for="output">Resultado</label>
+                <div class="result-box" id="output" role="status" aria-live="polite">Do  Lam  Rem/Fa  Sol7</div>
+            </div>
         </div>
     </div>
 
-    <!-- ============================================================
-    PESTAÑA: TRANSPOSITOR
-    ============================================================ -->
-    <div id="transposeTab" class="tab-content" role="tabpanel" aria-labelledby="tabTranspose">
-        <h1 class="section-title" style="margin-bottom: 1rem;">Transpositor</h1>
-
-        <div class="form-group">
-            <label for="chords">Acordes de entrada</label>
-            <textarea id="chords" class="form-control" rows="3"
-            placeholder="Ej: Sol  Mim  Lam/Do  Re7"
-        aria-label="Acordes a transponer">Sol  Mim  Lam/Do  Re7</textarea>
-    </div>
-
-    <div class="grid-2">
-        <div class="form-group">
-            <label for="fromKey">Tonalidad actual</label>
-            <select id="fromKey" class="form-control" aria-label="Tonalidad de origen"></select>
-        </div>
-        <div class="form-group">
-            <label for="toKey">Nueva tonalidad</label>
-            <select id="toKey" class="form-control" aria-label="Tonalidad de destino"></select>
-        </div>
-    </div>
-
-    <div class="grid-2">
-        <div class="form-group">
-            <label for="outputFormat">Formato de nota</label>
-            <select id="outputFormat" class="form-control" aria-label="Formato de salida">
-                <option value="es">Español (Do, Re, Mi...)</option>
-                <option value="en">Anglo (C, D, E...)</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="capoShift">Capodastro (Capo)</label>
-            <select id="capoShift" class="form-control" aria-label="Posición del capo">
-                <option value="0">Sin Capo</option>
-                <option value="1">Traste 1</option>
-                <option value="2">Traste 2</option>
-                <option value="3">Traste 3</option>
-                <option value="4">Traste 4</option>
-                <option value="5">Traste 5</option>
-            </select>
-        </div>
-    </div>
-
-    <button class="primary-btn" onclick="transpose()" aria-label="Transponer acordes">Transponer</button>
-
-    <div class="form-group" style="margin-top: 1rem;">
-        <label for="output">Resultado</label>
-        <div class="result-box" id="output" role="status" aria-live="polite">Do  Lam  Rem/Fa  Sol7</div>
-    </div>
-</div>
-</div>
-
-<script>
-    // ============================================================
-    // CONSTANTES Y CONFIGURACIÓN GLOBAL
-    // ============================================================
-    const NOTES_ES = ["Do", "Do#", "Re", "Re#", "Mi", "Fa", "Fa#", "Sol", "Sol#", "La", "La#", "Si"];
-    const NOTES_EN = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
-
-    const NOTE_MAP = Object.freeze({
-        'C': 0, 'DO': 0, 'C#': 1, 'DB': 1, 'DO#': 1, 'REB': 1,
-        'D': 2, 'RE': 2, 'D#': 3, 'EB': 3, 'RE#': 3, 'MIB': 3,
-        'E': 4, 'MI': 4, 'F': 5, 'FA': 5, 'F#': 6, 'GB': 6,
-        'FA#': 6, 'SOLB': 6, 'G': 7, 'SOL': 7, 'G#': 8, 'AB': 8,
-        'SOL#': 8, 'LAB': 8, 'A': 9, 'LA': 9, 'A#': 10, 'BB': 10,
-        'LA#': 10, 'SIB': 10, 'B': 11, 'SI': 11
-    });
-
-    const CENTS_THRESHOLD = 5;
-    const MAX_CENTS_DISPLAY = 50;
-    const MIN_RMS = 0.01;
-    const YIN_THRESHOLD = 0.15;
-    const FFT_SIZE = 2048;
-    const LOWPASS_FREQ = 800;
-
-    // ============================================================
-    // UTILIDADES DE NAVEGACIÓN
-    // ============================================================
-    function switchTab(tabId, element) {
-        document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-        document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.classList.remove('active');
-            btn.setAttribute('aria-selected', 'false');
-        });
-
-        const targetTab = document.getElementById(tabId);
-        targetTab.classList.add('active');
-        element.classList.add('active');
-        element.setAttribute('aria-selected', 'true');
-    }
-
-    // ============================================================
-    // TRANSPOSITOR
-    // ============================================================
-    const fromSelect = document.getElementById('fromKey');
-    const toSelect = document.getElementById('toKey');
-
-    // Poblar selectores de tonalidad
-    NOTES_ES.forEach((note, i) => {
-        const optionText = `${note} (${NOTES_EN[i]})`;
-        fromSelect.options.add(new Option(optionText, i));
-        toSelect.options.add(new Option(optionText, i));
-    });
-
-    fromSelect.selectedIndex = 7; // Sol
-    toSelect.selectedIndex = 0; // Do
-
-    /**
-     * Transpone una nota individual según el desplazamiento dado.
-     * @param {string} noteStr - Nombre de la nota
-     * @param {number} shift - Número de semitonos a desplazar
-     * @param {string[]} targetArray - Array de notas de destino
-     * @returns {string} Nota transpuesta
-     */
-    function transposeNote(noteStr, shift, targetArray) {
-        const key = noteStr.toUpperCase();
-        const originalIdx = NOTE_MAP[key];
-        if (originalIdx === undefined) return noteStr;
-
-        const newIdx = ((originalIdx + shift) % 12 + 12) % 12;
-        return targetArray[newIdx];
-    }
-
-    /**
-     * Construye la expresión regular para detectar notas.
-     */
-    function buildNoteRegex() {
-        const allNotes = [
-            'SOL#', 'SOLB', 'SOL', 'DO#', 'REB', 'DO', 'RE#', 'MIB', 'RE',
-            'MI', 'FA#', 'FA', 'LA#', 'SIB', 'LAB', 'LA', 'SI',
-            'C#', 'DB', 'C', 'D#', 'EB', 'D', 'E', 'F#', 'GB', 'F',
-            'G#', 'AB', 'G', 'A#', 'BB', 'A', 'B'
-        ];
-        const uniqueNotes = [...new Set(allNotes)];
-        return uniqueNotes.join('|');
-    }
-
-    /**
-     * Transpone todos los acordes del textarea de entrada.
-     */
-    function transpose() {
-        const from = parseInt(fromSelect.value, 10);
-        const to = parseInt(toSelect.value, 10);
-        const capo = parseInt(document.getElementById('capoShift').value, 10);
-        const shift = ((to - from - capo) % 12 + 12) % 12;
-        const format = document.getElementById('outputFormat').value;
-        const targetArray = format === 'es' ? NOTES_ES : NOTES_EN;
-
-        const input = document.getElementById('chords').value.trim();
-        if (!input) {
-            document.getElementById('output').innerText = 'Introduce acordes para transponer.';
-            return;
+    <script>
+        // ============================================================
+        // UTILIDADES DE NAVEGACIÓN
+        // ============================================================
+        function switchTab(tabId, element) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+                btn.setAttribute('aria-selected', 'false');
+            });
+            document.getElementById(tabId).classList.add('active');
+            element.classList.add('active');
+            element.setAttribute('aria-selected', 'true');
         }
 
-        const noteRegex = buildNoteRegex();
-        const regex = new RegExp(`(${noteRegex})(?=[^a-zA-ZáéíóúñÁÉÍÓÚÑ]|$)`, 'gi');
+        // ============================================================
+        // CONSTANTES GLOBALES
+        // ============================================================
+        const NOTES_ES = ["Do", "Do#", "Re", "Re#", "Mi", "Fa", "Fa#", "Sol", "Sol#", "La", "La#", "Si"];
+        const NOTES_EN = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
 
-        const transposed = input.replace(regex, (match) => {
-            return transposeNote(match, shift, targetArray);
+        const NOTE_MAP = Object.freeze({
+            'C':0,'DO':0,'C#':1,'DB':1,'DO#':1,'REB':1,
+            'D':2,'RE':2,'D#':3,'EB':3,'RE#':3,'MIB':3,
+            'E':4,'MI':4,'F':5,'FA':5,'F#':6,'GB':6,
+            'FA#':6,'SOLB':6,'G':7,'SOL':7,'G#':8,'AB':8,
+            'SOL#':8,'LAB':8,'A':9,'LA':9,'A#':10,'BB':10,
+            'LA#':10,'SIB':10,'B':11,'SI':11
         });
 
-        const outputEl = document.getElementById('output');
-        outputEl.innerText = transposed;
-        outputEl.style.color = 'var(--accent-green)';
-    }
+        // ============================================================
+        // TRANSPOSITOR
+        // ============================================================
+        const fromSelect = document.getElementById('fromKey');
+        const toSelect = document.getElementById('toKey');
 
-    // ============================================================
-    // AFINADOR — MÓDULO IIFE PARA AISLAR ESTADO
-    // ============================================================
-    (function() {
-        // --- Estado ---
-        let a4Frequency = 440;
-        let currentInstrument = 'guitar';
-        let currentTuningKey = 'standard';
-        let currentStrings = [];
-        let tuningMode = 'auto';
-        let activeStringIndex = 0;
-        let audioContext = null;
-        let analyser = null;
-        let lowpassFilter = null;
-        let microphoneStream = null;
-        let isListening = false;
-        let animationId = null;
-        let lastDetectedNote = null;
+        NOTES_ES.forEach((note, i) => {
+            const optText = `${note} (${NOTES_EN[i]})`;
+            fromSelect.options.add(new Option(optText, i));
+            toSelect.options.add(new Option(optText, i));
+        });
+        fromSelect.selectedIndex = 7;  // Sol
+        toSelect.selectedIndex = 0;    // Do
 
-        const BUFFER_SIZE = FFT_SIZE;
-        const buffer = new Float32Array(BUFFER_SIZE);
+        function transposeNote(noteStr, shift, targetArray) {
+            const key = noteStr.toUpperCase();
+            const idx = NOTE_MAP[key];
+            if (idx === undefined) return noteStr;
+            const newIdx = ((idx + shift) % 12 + 12) % 12;
+            return targetArray[newIdx];
+        }
 
-        // --- Referencias DOM ---
-        const noteNameEl = document.getElementById('noteName');
-        const noteFreqEl = document.getElementById('noteFreq');
-        const noteDisplayEl = document.getElementById('noteDisplay');
-        const tunerBar = document.getElementById('tunerBar');
-        const tunerMeter = document.getElementById('tunerMeter');
-        const centValueEl = document.getElementById('centValue');
-        const stringsContainer = document.getElementById('stringsContainer');
-        const statusMsg = document.getElementById('statusMessage');
-        const instrumentBtns = document.querySelectorAll('#instrumentSelector button');
-        const modeBtns = document.querySelectorAll('#modeSelector button');
-        const micBtn = document.getElementById('micBtn');
-        const tuningSelect = document.getElementById('tuningSelect');
-        const a4Input = document.getElementById('a4Freq');
+        function transpose() {
+            const from = parseInt(fromSelect.value, 10);
+            const to = parseInt(toSelect.value, 10);
+            const capo = parseInt(document.getElementById('capoShift').value, 10);
+            const shift = ((to - from - capo) % 12 + 12) % 12;
+            const format = document.getElementById('outputFormat').value;
+            const target = format === 'es' ? NOTES_ES : NOTES_EN;
 
-        // --- Configuración de afinaciones ---
-        // (Nota: Esta parte estaba truncada en tu código original, la he completado para que funcione correctamente)
-        const TUNINGS = Object.freeze({
-            guitar: {
-                standard: [
-                    { note: 'E', octave: 2, label: '6ª' },
-                    { note: 'A', octave: 2, label: '5ª' },
-                    { note: 'D', octave: 3, label: '4ª' },
-                    { note: 'G', octave: 3, label: '3ª' },
-                    { note: 'B', octave: 3, label: '2ª' },
-                    { note: 'E', octave: 4, label: '1ª' }
-                ],
-                dropD: [
-                    { note: 'D', octave: 2, label: '6ª' },
-                    { note: 'A', octave: 2, label: '5ª' },
-                    { note: 'D', octave: 3, label: '4ª' },
-                    { note: 'G', octave: 3, label: '3ª' },
-                    { note: 'B', octave: 3, label: '2ª' },
-                    { note: 'E', octave: 4, label: '1ª' }
-                ],
-                halfStepDown: [
-                    { note: 'D#', octave: 2, label: '6ª' },
-                    { note: 'G#', octave: 2, label: '5ª' },
-                    { note: 'C#', octave: 3, label: '4ª' },
-                    { note: 'F#', octave: 3, label: '3ª' },
-                    { note: 'A#', octave: 3, label: '2ª' },
-                    { note: 'D#', octave: 4, label: '1ª' }
-                ]
-            },
-            bass: {
-                standard: [
-                    { note: 'E', octave: 1, label: '4ª' },
-                    { note: 'A', octave: 1, label: '3ª' },
-                    { note: 'D', octave: 2, label: '2ª' },
-                    { note: 'G', octave: 2, label: '1ª' }
-                ]
+            const input = document.getElementById('chords').value.trim();
+            if (!input) {
+                document.getElementById('output').innerText = 'Introduce acordes para transponer.';
+                return;
             }
-        });
 
-        // Aquí continuaría el resto del código lógico de tu afinador (API de audio, detección de pitch YIN, etc).
-        // Se ha cerrado la IIFE correctamente para prevenir errores de sintaxis.
-    })();
-</script>
+            const allNotes = ['SOL#','SOLB','SOL','DO#','REB','DO','RE#','MIB','RE',
+                'MI','FA#','FA','LA#','SIB','LAB','LA','SI',
+                'C#','DB','C','D#','EB','D','E','F#','GB','F',
+                'G#','AB','G','A#','BB','A','B'];
+            const regex = new RegExp(`(${allNotes.join('|')})(?=[^a-zA-ZáéíóúñÁÉÍÓÚÑ]|$)`, 'gi');
+
+            const result = input.replace(regex, (match) => transposeNote(match, shift, target));
+            document.getElementById('output').innerText = result;
+        }
+
+        // ============================================================
+        // AFINADOR — MÓDULO COMPLETO
+        // ============================================================
+        (function() {
+            'use strict';
+
+            // --- Configuración de afinaciones ---
+            const TUNINGS = {
+                guitar: {
+                    standard: [
+                        { note: 'E', octave: 2, label: '6ª' },
+                        { note: 'A', octave: 2, label: '5ª' },
+                        { note: 'D', octave: 3, label: '4ª' },
+                        { note: 'G', octave: 3, label: '3ª' },
+                        { note: 'B', octave: 3, label: '2ª' },
+                        { note: 'E', octave: 4, label: '1ª' }
+                    ],
+                    dropD: [
+                        { note: 'D', octave: 2, label: '6ª' },
+                        { note: 'A', octave: 2, label: '5ª' },
+                        { note: 'D', octave: 3, label: '4ª' },
+                        { note: 'G', octave: 3, label: '3ª' },
+                        { note: 'B', octave: 3, label: '2ª' },
+                        { note: 'E', octave: 4, label: '1ª' }
+                    ],
+                    halfStepDown: [
+                        { note: 'D#', octave: 2, label: '6ª' },
+                        { note: 'G#', octave: 2, label: '5ª' },
+                        { note: 'C#', octave: 3, label: '4ª' },
+                        { note: 'F#', octave: 3, label: '3ª' },
+                        { note: 'A#', octave: 3, label: '2ª' },
+                        { note: 'D#', octave: 4, label: '1ª' }
+                    ]
+                },
+                bass: {
+                    standard: [
+                        { note: 'E', octave: 1, label: '4ª' },
+                        { note: 'A', octave: 1, label: '3ª' },
+                        { note: 'D', octave: 2, label: '2ª' },
+                        { note: 'G', octave: 2, label: '1ª' }
+                    ]
+                }
+            };
+
+            // --- Mapeo de notas a número MIDI (A4 = 69) ---
+            const NOTE_TO_MIDI = {
+                'C': 0, 'C#': 1, 'D': 2, 'D#': 3, 'E': 4, 'F': 5,
+                'F#': 6, 'G': 7, 'G#': 8, 'A': 9, 'A#': 10, 'B': 11
+            };
+
+            function noteToMidi(note, octave) {
+                const base = NOTE_TO_MIDI[note];
+                if (base === undefined) return 0;
+                return (octave + 1) * 12 + base;
+            }
+
+            function midiToFreq(midi, a4Freq) {
+                return a4Freq * Math.pow(2, (midi - 69) / 12);
+            }
+
+            // --- Estado del afinador ---
+            let a4Frequency = 440;
+            let currentInstrument = 'guitar';
+            let currentTuningKey = 'standard';
+            let currentStrings = [];
+            let tuningMode = 'auto';
+            let activeStringIndex = 0;
+            let audioContext = null;
+            let analyser = null;
+            let microphoneStream = null;
+            let isListening = false;
+            let animationId = null;
+            const BUFFER_SIZE = 2048;
+            const buffer = new Float32Array(BUFFER_SIZE);
+
+            // --- Referencias DOM ---
+            const noteNameEl = document.getElementById('noteName');
+            const noteFreqEl = document.getElementById('noteFreq');
+            const noteDisplayEl = document.getElementById('noteDisplay');
+            const tunerBar = document.getElementById('tunerBar');
+            const centValueEl = document.getElementById('centValue');
+            const stringsContainer = document.getElementById('stringsContainer');
+            const statusMsg = document.getElementById('statusMessage');
+            const instrumentBtns = document.querySelectorAll('#instrumentSelector button');
+            const modeBtns = document.querySelectorAll('#modeSelector button');
+            const micBtn = document.getElementById('micBtn');
+            const tuningSelect = document.getElementById('tuningSelect');
+            const a4Input = document.getElementById('a4Freq');
+
+            // --- Funciones de utilidad ---
+            function getStringFrequencies(instrument, tuningKey, a4) {
+                const tuning = TUNINGS[instrument];
+                if (!tuning) return [];
+                const strings = tuning[tuningKey];
+                if (!strings) return [];
+                return strings.map(s => {
+                    const midi = noteToMidi(s.note, s.octave);
+                    const freq = midiToFreq(midi, a4);
+                    return { ...s, freq };
+                });
+            }
+
+            function updateStrings() {
+                currentStrings = getStringFrequencies(currentInstrument, currentTuningKey, a4Frequency);
+                renderStrings();
+            }
+
+            // --- Renderizar cuerdas ---
+            function renderStrings() {
+                stringsContainer.innerHTML = '';
+                currentStrings.forEach((str, idx) => {
+                    const btn = document.createElement('button');
+                    btn.className = 'string-btn';
+                    if (idx === activeStringIndex) btn.classList.add('active-string');
+                    if (tuningMode === 'manual') btn.classList.add('manual-active');
+                    btn.dataset.index = idx;
+
+                    const noteSpan = document.createElement('span');
+                    noteSpan.textContent = str.note;
+                    const labelSpan = document.createElement('span');
+                    labelSpan.className = 'string-note';
+                    labelSpan.textContent = `${str.label} ${str.freq.toFixed(1)} Hz`;
+
+                    btn.appendChild(noteSpan);
+                    btn.appendChild(labelSpan);
+
+                    btn.addEventListener('click', function() {
+                        if (tuningMode === 'manual') {
+                            setActiveString(parseInt(this.dataset.index, 10), true);
+                        }
+                    });
+
+                    stringsContainer.appendChild(btn);
+                });
+            }
+
+            function setActiveString(index, updateText = true) {
+                if (index === activeStringIndex && updateText) return;
+                activeStringIndex = index;
+                document.querySelectorAll('.string-btn').forEach((btn, idx) => {
+                    btn.classList.toggle('active-string', idx === index);
+                });
+                if (updateText && tuningMode === 'manual') {
+                    const str = currentStrings[index];
+                    noteNameEl.textContent = str.note;
+                    noteFreqEl.textContent = '— Hz';
+                    tunerBar.style.width = '50%';
+                    centValueEl.textContent = '––';
+                    tunerBar.classList.remove('in-tune');
+                    centValueEl.classList.remove('in-tune');
+                    noteNameEl.classList.remove('in-tune');
+                    noteDisplayEl.classList.remove('detected');
+                }
+            }
+
+            // --- Algoritmo de detección de tono (autocorrelación) ---
+            function autoCorrelate(buf, sampleRate) {
+                let size = buf.length;
+                let rms = 0;
+                for (let i = 0; i < size; i++) {
+                    const val = buf[i];
+                    rms += val * val;
+                }
+                rms = Math.sqrt(rms / size);
+                if (rms < 0.01) return -1;
+
+                let r1 = 0, r2 = size - 1, thresh = 0.2;
+                for (let i = 0; i < size / 2; i++) {
+                    if (Math.abs(buf[i]) < thresh) { r1 = i; break; }
+                }
+                for (let i = 1; i < size / 2; i++) {
+                    if (Math.abs(buf[size - i]) < thresh) { r2 = size - i; break; }
+                }
+                buf = buf.slice(r1, r2);
+                size = buf.length;
+
+                const c = new Array(size).fill(0);
+                for (let i = 0; i < size; i++) {
+                    for (let j = 0; j < size - i; j++) {
+                        c[i] += buf[j] * buf[j + i];
+                    }
+                }
+
+                let d = 0;
+                while (d < size - 1 && c[d] > c[d + 1]) d++;
+                let maxval = -1, maxpos = -1;
+                for (let i = d; i < size; i++) {
+                    if (c[i] > maxval) {
+                        maxval = c[i];
+                        maxpos = i;
+                    }
+                }
+                let T0 = maxpos;
+                if (T0 <= 0 || T0 >= size - 1) return -1;
+
+                const x1 = c[T0 - 1], x2 = c[T0], x3 = c[T0 + 1];
+                const a = (x1 + x3 - 2 * x2) / 2;
+                const b = (x3 - x1) / 2;
+                if (a !== 0) T0 = T0 - b / (2 * a);
+
+                return sampleRate / T0;
+            }
+
+            // --- Cálculo de cents ---
+            function getCents(detectedFreq, targetFreq) {
+                if (targetFreq <= 0) return 0;
+                return Math.round(1200 * Math.log2(detectedFreq / targetFreq));
+            }
+
+            function findClosestString(freq) {
+                if (!currentStrings.length) return { string: currentStrings[0], index: 0 };
+                let closest = currentStrings[0];
+                let minDiff = Math.abs(freq - closest.freq);
+                let index = 0;
+                for (let i = 1; i < currentStrings.length; i++) {
+                    const diff = Math.abs(freq - currentStrings[i].freq);
+                    if (diff < minDiff) {
+                        minDiff = diff;
+                        closest = currentStrings[i];
+                        index = i;
+                    }
+                }
+                return { string: closest, index };
+            }
+
+            // --- Actualizar interfaz ---
+            function updateDisplay(detectedFreq) {
+                if (detectedFreq === -1) {
+                    noteDisplayEl.classList.remove('detected');
+                    return;
+                }
+
+                let targetNote, targetFreq, targetIndex;
+                if (tuningMode === 'auto') {
+                    const match = findClosestString(detectedFreq);
+                    targetNote = match.string.note;
+                    targetFreq = match.string.freq;
+                    targetIndex = match.index;
+                    setActiveString(targetIndex, false);
+                } else {
+                    const str = currentStrings[activeStringIndex] || currentStrings[0];
+                    targetNote = str.note;
+                    targetFreq = str.freq;
+                }
+
+                const cents = getCents(detectedFreq, targetFreq);
+                const clamped = Math.min(50, Math.max(-50, cents));
+                const percent = 50 + (clamped / 100) * 50;
+
+                tunerBar.style.width = percent + '%';
+                const isTuned = Math.abs(cents) <= 5;
+                tunerBar.classList.toggle('in-tune', isTuned);
+                centValueEl.classList.toggle('in-tune', isTuned);
+                noteNameEl.classList.toggle('in-tune', isTuned);
+
+                centValueEl.textContent = (cents > 0 ? '+' : '') + cents;
+                noteNameEl.textContent = targetNote;
+                noteFreqEl.textContent = detectedFreq.toFixed(1) + ' Hz';
+                noteDisplayEl.classList.add('detected');
+            }
+
+            // --- Manejo del micrófono ---
+            async function toggleMicrophone() {
+                if (isListening) {
+                    // Detener
+                    if (audioContext && audioContext.state === 'running') {
+                        await audioContext.suspend();
+                    }
+                    cancelAnimationFrame(animationId);
+                    micBtn.textContent = 'Activar micrófono';
+                    micBtn.classList.remove('listening');
+                    statusMsg.textContent = 'Micrófono pausado';
+                    statusMsg.className = 'status-message';
+                    isListening = false;
+                    return;
+                }
+
+                try {
+                    if (!audioContext) {
+                        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                        analyser = audioContext.createAnalyser();
+                        analyser.fftSize = BUFFER_SIZE;
+                        analyser.smoothingTimeConstant = 0.8;
+
+                        const stream = await navigator.mediaDevices.getUserMedia({
+                            audio: {
+                                echoCancellation: false,
+                                autoGainControl: false,
+                                noiseSuppression: false
+                            }
+                        });
+                        microphoneStream = stream;
+                        const source = audioContext.createMediaStreamSource(stream);
+                        source.connect(analyser);
+                    } else {
+                        if (audioContext.state === 'suspended') {
+                            await audioContext.resume();
+                        }
+                    }
+
+                    micBtn.textContent = 'Detener';
+                    micBtn.classList.add('listening');
+                    statusMsg.textContent = 'Escuchando...';
+                    statusMsg.className = 'status-message success';
+                    isListening = true;
+                    updatePitchLoop();
+
+                } catch (err) {
+                    console.error('Error al acceder al micrófono:', err);
+                    statusMsg.textContent = 'Permiso de micrófono denegado';
+                    statusMsg.className = 'status-message error';
+                }
+            }
+
+            function updatePitchLoop() {
+                if (!isListening) return;
+                analyser.getFloatTimeDomainData(buffer);
+                const pitch = autoCorrelate(buffer, audioContext.sampleRate);
+                updateDisplay(pitch);
+                animationId = requestAnimationFrame(updatePitchLoop);
+            }
+
+            // --- Inicialización ---
+            function populateTuningSelect() {
+                const inst = currentInstrument;
+                const tunings = Object.keys(TUNINGS[inst] || {});
+                tuningSelect.innerHTML = '';
+                tunings.forEach(key => {
+                    const opt = document.createElement('option');
+                    opt.value = key;
+                    opt.textContent = key.replace(/([A-Z])/g, ' $1').trim() || key;
+                    if (key === currentTuningKey) opt.selected = true;
+                    tuningSelect.appendChild(opt);
+                });
+            }
+
+            function init() {
+                // Poblar selector de afinaciones
+                populateTuningSelect();
+                // Cargar primera afinación
+                currentTuningKey = tuningSelect.value;
+                updateStrings();
+
+                // Eventos
+                instrumentBtns.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const inst = this.dataset.instrument;
+                        if (inst === currentInstrument) return;
+                        currentInstrument = inst;
+                        currentTuningKey = 'standard';
+                        instrumentBtns.forEach(b => b.classList.toggle('active', b === this));
+                        populateTuningSelect();
+                        updateStrings();
+                        // Resetear display
+                        noteNameEl.textContent = '–';
+                        noteFreqEl.textContent = '0.0 Hz';
+                        tunerBar.style.width = '50%';
+                        centValueEl.textContent = '––';
+                        tunerBar.classList.remove('in-tune');
+                        centValueEl.classList.remove('in-tune');
+                        noteNameEl.classList.remove('in-tune');
+                        noteDisplayEl.classList.remove('detected');
+                        statusMsg.textContent = 'Pulse el botón para empezar';
+                        statusMsg.className = 'status-message';
+                    });
+                });
+
+                modeBtns.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const mode = this.dataset.mode;
+                        if (mode === tuningMode) return;
+                        tuningMode = mode;
+                        modeBtns.forEach(b => b.classList.toggle('active', b === this));
+                        document.querySelectorAll('.string-btn').forEach(s => {
+                            s.classList.toggle('manual-active', mode === 'manual');
+                        });
+                        if (mode === 'manual') {
+                            setActiveString(0, true);
+                            statusMsg.textContent = 'Toque la cuerda que quiere afinar';
+                            statusMsg.className = 'status-message';
+                        } else {
+                            statusMsg.textContent = isListening ? 'Escuchando...' : 'Pulse el botón para empezar';
+                            statusMsg.className = isListening ? 'status-message success' : 'status-message';
+                        }
+                    });
+                });
+
+                tuningSelect.addEventListener('change', function() {
+                    currentTuningKey = this.value;
+                    updateStrings();
+                    // Resetear display
+                    noteNameEl.textContent = '–';
+                    noteFreqEl.textContent = '0.0 Hz';
+                    tunerBar.style.width = '50%';
+                    centValueEl.textContent = '––';
+                    tunerBar.classList.remove('in-tune');
+                    centValueEl.classList.remove('in-tune');
+                    noteNameEl.classList.remove('in-tune');
+                    noteDisplayEl.classList.remove('detected');
+                });
+
+                a4Input.addEventListener('input', function() {
+                    let val = parseFloat(this.value);
+                    if (isNaN(val) || val < 400 || val > 480) val = 440;
+                    a4Frequency = val;
+                    updateStrings();
+                    // Resetear display
+                    noteNameEl.textContent = '–';
+                    noteFreqEl.textContent = '0.0 Hz';
+                    tunerBar.style.width = '50%';
+                    centValueEl.textContent = '––';
+                    tunerBar.classList.remove('in-tune');
+                    centValueEl.classList.remove('in-tune');
+                    noteNameEl.classList.remove('in-tune');
+                    noteDisplayEl.classList.remove('detected');
+                });
+
+                micBtn.addEventListener('click', toggleMicrophone);
+
+                // Estado inicial
+                statusMsg.textContent = 'Pulse el botón para empezar';
+                statusMsg.className = 'status-message';
+            }
+
+            // Iniciar
+            init();
+        })();
+    </script>
 </body>
 </html>
