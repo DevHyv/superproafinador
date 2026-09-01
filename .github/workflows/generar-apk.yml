@@ -33,39 +33,30 @@ jobs:
         run: |
           npm init -y
           npm install @capacitor/core@5.7.5 @capacitor/cli@5.7.5 @capacitor/android@5.7.5
-          npx cap init "Afinador" "com.afinador.app" --web-dir www
+          npx cap init "Transpositor" "com.transpositor.app" --web-dir www
           npx cap add android
 
-          # Inyección de permisos de micrófono (más robusta)
-          MANIFEST="android/app/src/main/AndroidManifest.xml"
-          if ! grep -q "RECORD_AUDIO" "$MANIFEST"; then
-            sed -i '/<application/i \    <uses-permission android:name="android.permission.RECORD_AUDIO" />\n    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />' "$MANIFEST"
-          fi
-
-          # Generar iconos si existe icon.png
           if [ -f "icon.png" ]; then
             sudo apt-get update && sudo apt-get install -y imagemagick
-            # Eliminar carpetas anteriores para evitar conflictos
-            rm -rf android/app/src/main/res/mipmap-*
-            # Crear estructura
-            mkdir -p android/app/src/main/res/mipmap-mdpi
-            mkdir -p android/app/src/main/res/mipmap-hdpi
-            mkdir -p android/app/src/main/res/mipmap-xhdpi
-            mkdir -p android/app/src/main/res/mipmap-xxhdpi
-            mkdir -p android/app/src/main/res/mipmap-xxxhdpi
-            # Generar iconos redondos y cuadrados
+            
+            # Borramos la carpeta por defecto de Android que bloquea los PNG personalizados
+            rm -rf android/app/src/main/res/mipmap-anydpi-v26
+            
+            # Reemplazamos los iconos en todas las densidades de pantalla
             convert icon.png -resize 48x48 android/app/src/main/res/mipmap-mdpi/ic_launcher.png
             convert icon.png -resize 48x48 android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png
+            
             convert icon.png -resize 72x72 android/app/src/main/res/mipmap-hdpi/ic_launcher.png
             convert icon.png -resize 72x72 android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png
+            
             convert icon.png -resize 96x96 android/app/src/main/res/mipmap-xhdpi/ic_launcher.png
             convert icon.png -resize 96x96 android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png
+            
             convert icon.png -resize 144x144 android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png
             convert icon.png -resize 144x144 android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png
+            
             convert icon.png -resize 192x192 android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png
             convert icon.png -resize 192x192 android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png
-          else
-            echo "No se encontró icon.png, se usarán los iconos por defecto de Capacitor"
           fi
 
           npx cap sync android
@@ -73,7 +64,7 @@ jobs:
           cd android
           chmod +x gradlew
           ./gradlew assembleDebug --no-daemon
-
+          
       - name: Entregar APK
         uses: actions/upload-artifact@v4
         with:
