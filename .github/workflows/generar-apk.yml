@@ -33,7 +33,7 @@ jobs:
         run: |
           npm init -y
           npm install @capacitor/core@5.7.5 @capacitor/cli@5.7.5 @capacitor/android@5.7.5
-          npx cap init "Transpositor" "com.transpositor.app" --web-dir www
+          npx cap init "Afinador" "com.Afinador.app" --web-dir www
           npx cap add android
 
           if [ -f "icon.png" ]; then
